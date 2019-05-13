@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Chapter 02: Question 1</title>
+</head>
+<body>
+<form name="form1" action="">
+	<input type="text" id="cent" name="cent" placeholder="请输入摄氏温度..."/>
+	<br />
+	<span></span>
+	<p>
+		<input type="submit" value="Convert" id="submit1" name="submit1" />
+	</p> 
+</form>
+<script>
+	function checkForm(e) {
+		e.preventDefault();
+		var degCent = document.form1.elements[0];
+		var warning = document.getElementsByTagName("span")[0];
+		if (degCent.value == ""){
+			warning.innerHTML="请输入摄氏温度，程序将为您转换为华氏温度！";
+		} else if (isNaN(degCent.value)){
+			warning.innerHTML="摄氏温度应为数值！";
+		} else {
+			var degFahren = (9 / 5 * parseFloat(degCent.value)) + 32;
+			warning.innerHTML= degCent.value + "\xB0 对应的华氏温度为： " + degFahren +"\xB0";
+		}
+		
+	}
+	document.form1.addEventListener("submit", checkForm);
+</script>
+</body>
+</html>
